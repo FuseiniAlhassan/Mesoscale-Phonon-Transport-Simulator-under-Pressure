@@ -1,18 +1,9 @@
-# Mesoscale Phonon Transport Simulator
-# Author: Shanti Deemyad (Conceptual Goal)
-#
-# This script simulates the behavior of a 2D crystal lattice under tunable
-# pressure and temperature. It models lattice sites as nodes in a network
-# with spring-like edges. The simulation visualizes how pressure distorts
-# the lattice and animates the resulting changes in phonon (vibrational) modes.
-
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from tqdm import tqdm
 
-# --- Configuration Parameters ---
 # Lattice Settings
 GRID_WIDTH = 20
 GRID_HEIGHT = 15
@@ -51,8 +42,6 @@ def create_lattice(width, height, spacing):
         
     print(f"Created a {width}x{height} lattice with {G.number_of_nodes()} sites.")
     return G
-
-# --- 2. Physics Simulation Core ---
 
 def apply_forces(G):
     """
@@ -108,7 +97,6 @@ def update_pressure(G, current_step):
         for edge in G.edges():
             G.edges[edge]['rest_length'] = new_rest_length
 
-# --- 3. Analysis and Visualization ---
 
 def compute_local_conductance_metric(G):
     """
